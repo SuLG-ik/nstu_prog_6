@@ -4,7 +4,7 @@
 int intInputWithLabel() {
     std::string value;
     do {
-        std::cin >> value;
+        std::getline(std::cin, value);
         try {
             int iValue = std::stoi(value);
             if (iValue != 0 && iValue != 1) {
@@ -13,9 +13,7 @@ int intInputWithLabel() {
             return iValue;
         } catch (...) {
             std::cout << "Invalid number entered! Try again\n";
-            std::cin.clear();
         }
-
     } while (true);
 }
 
@@ -37,7 +35,7 @@ Laptop *initLaptop() {
         } catch (std::invalid_argument &e) {
             std::cout << "Error during initializing. " << e.what() << std::endl;
             std::cout << "Try again? (0, 1): ";
-            std::cin >> loop;
+            loop = intInputWithLabel();
         }
     }
     return nullptr;
